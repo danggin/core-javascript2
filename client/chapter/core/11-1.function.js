@@ -70,6 +70,41 @@ function rem(pxValue, base = 14) {
 console.log(rem(20));
 console.log(rem('25px'));
 
+function getStyle(node, prop) {
+    if (typeof node === 'string') {
+        node = document.querySelector(node);
+    }
+    if (typeof node !== 'string') {
+        throw new Error(
+            'getStyle 함수의 두 번째 인수는 문자 타입이어야 합니다.'
+        );
+    }
+    return getComputedStyle(node)[prop];
+}
+
+// const size = getStyle('.first', 'fontSize');
+
+function setStyle(node, prop, value) {
+    if (typeof node === 'string') {
+        node = document.querySelector(node);
+    }
+    if (typeof prop !== 'string') {
+        throw new Error(
+            'setStyle 함수의 두 번째 인수는 문자 타입이어야 합니다.'
+        );
+    }
+    if (!value) {
+        throw new Error('setStyle 함수의 세 번째 인수는 필수 입력 값입니다.');
+    }
+    node.style[prop] = value;
+}
+
+setStyle('.first', 'color', 'red');
+
+function style(node, prop, value) {
+    return !value ? getStyle(node, prop) : setStyle(node, prop, value);
+}
+
 // css(node: string, prop: string, value: number|strung) : string;
 let css;
 
