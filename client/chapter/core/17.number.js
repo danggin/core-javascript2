@@ -58,13 +58,13 @@ console.log(pow);
 
 // JSDoc
 /**
- * 2개의 인수를 받으며 가장 작은 수를 ㅚ소값으로 인식합니다. 최소값과 최대값의 랜덤한 수를 반환합니다.
+ * 2개의 인수를 받으며 가장 작은 수를 최소값으로 인식합니다. 최소값과 최대값의 랜덤한 수를 반환합니다.
  * @param {number} min
  * @param {number} max
  * @returns number
  */
 
-let getRandomMinMax = (min, max) => {
+const getRandomMinMax = (min, max) => {
     if (min > max) throw new Error('최소값은 최대값보다 작아야 합니다.');
     return Math.round(Math.random() * (max - min) + min);
 };
