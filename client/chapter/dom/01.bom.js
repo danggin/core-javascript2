@@ -23,6 +23,7 @@ const { alert, confirm, prompt, setTimeout, setInterval } = window;
 
 function getCoords(succes) {
   navigator.geolocation.getCurrentPosition((data) => {
+    // 브라우저에 요청해서 받아와야 해서 비동기 처리가 필요하기 때문에 ~ 콜백 함수를 활용한다
     const { latitude: lat, longitude: long } = data.coords;
 
     succes({ lat, long });
@@ -35,6 +36,7 @@ getCoords((result) => {
 
 // promise
 // callback 방식을 더 깔끔하게 쓸 수 있다
+// ayns away 가 더 깔끔쓰 ~
 
 function getCoordsPromise() {
   return new Promise((resolve, reject) => {
